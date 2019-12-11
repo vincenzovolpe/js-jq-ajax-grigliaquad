@@ -4,6 +4,7 @@ var righeGriglia = 6; // Quadratini per ogni riga
 var margini = '2px'; // Margine sinistro + margine destro in px dei quadratini
 var numero_estratto;
 
+
 // Document Ready
 $(document).ready(function(){
     // Chiamiamo la funzione per la creazione della Griglia
@@ -19,18 +20,8 @@ $(document).ready(function(){
             success: function(data) {
                 // Memorizzo il risultato restituito in una variabile
                 numero = data.response;
-                // Controllo se il numero restituito dall' API è <= 5
-                if (numero <= 5) {
-                    // Coloro il quadratino giallo se  numero è <= 5
-                    click_attuale.addClass("yellow");
-                    // Stampo al centro del quadratino il  numero restituito  dall ' API
-                    click_attuale.html(numero);
-                } else {
-                    // Coloro il quadratino verde se  numero è > 5
-                    click_attuale.addClass("green");
-                    // Stampo al centro del quadratino il  numero restituito  dall ' API
-                    click_attuale.html(numero);
-                }
+                // Chiamo la funzione che colora il quadratino e stampa il numero al centro
+                colora_e_stampa(click_attuale, numero);
             },
             error: function() {
                 alert('Error')
@@ -44,6 +35,20 @@ $(window).resize(function() {
     creaQuadratini();
 });
 
+
+// Funzione che colora il quadratino e stampa il numero al centro
+function colora_e_stampa(click_attuale, numero) {
+    // Controllo se il numero restituito dall' API è <= 5
+    if (numero <= 5) {
+        // Coloro il quadratino giallo se  numero è <= 5
+        click_attuale.addClass('yellow');
+    } else {
+        // Coloro il quadratino verde se numero è > 5
+        click_attuale.addClass('green');
+    }
+    // Stampo al centro del quadratino il numero restituito dall' API
+    click_attuale.html(numero);
+}
 
 // Funzione per la generazione dei quadratini
 function creaGriglia(larghezzaGriglia, righeGriglia) {
