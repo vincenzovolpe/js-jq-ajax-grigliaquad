@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: powderblue;
+}
+
+h1 {
+    font-size: 1.66vw;
+    color: blue;
+}
+
+h2 {
+    font-size: 1.25vw;
+    color: orangered;
+}
+
+.titolo  {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.contenitore {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.quadratino {
+    float:left;
+    margin: 1px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+
+
+.yellow {
+    background-color: yellow;
+}
+.green {
+    background-color: green;
+}
