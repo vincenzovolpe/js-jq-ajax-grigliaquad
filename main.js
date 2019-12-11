@@ -3,6 +3,7 @@ var larghezzaGriglia = '40%'; // Larghezza della griglia in percentuale
 var righeGriglia = 6; // Quadratini per ogni riga
 var margini = '2px'; // Margine sinistro + margine destro in px dei quadratini
 var numero_estratto;
+
 // Document Ready
 $(document).ready(function(){
     // Chiamiamo la funzione per la creazione della Griglia
@@ -46,12 +47,22 @@ $(window).resize(function() {
 
 // Funzione per la generazione dei quadratini
 function creaGriglia(larghezzaGriglia, righeGriglia) {
+  // Recupero l'html del template del messaggio
+  var template_html = $('#template-quadratino').html();
+  // Compilo l'html  con la funzione di handlebars
+  var template_function = Handlebars.compile(template_html);
   // Calcolo il totale dei quadratini della griglia
   var totaleQuadratini = righeGriglia * righeGriglia;
   // Creo la struttura della griglia in html con un ciclo for in base alla dimensione della griglia data dalla variabile totaleQuadratini
   for (j = 0; j < totaleQuadratini; j++) {
       // Aggiungo il div quadratino alla griglia
-      $("<div class='quadratino'></div>").appendTo($(".contenitore"));
+      //$("<div class='quadratino'></div>").appendTo($(".contenitore"));
+      var variabile = {
+          'classe': 'quadratino'
+      };
+
+      var html_finale = template_function(variabile);
+      $(".contenitore").append(html_finale);
   }
   // Assegno la larghezza impostata nella variabile altezzaGriglia alla griglia
   $('.contenitore').width(larghezzaGriglia);

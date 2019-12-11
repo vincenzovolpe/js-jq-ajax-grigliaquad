@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="main.js" charset="utf-8"></script>
 
         <link rel="stylesheet" href="style.css">
@@ -13,8 +14,12 @@
         <div class="contenitore">
             <div class="titolo">
                 <h1>GRIGLIA JQUERY-AJAX</h1>
-                <h2>Fai click sui quadratini per scoprire i colore e il numero</h2>
+                <h2>Fai click sui quadratini per scoprire il colore e il numero</h2>
             </div>
         </div>
+        <!-- Template quadratino -->
+        <script id="template-quadratino" type="text/x-handlebars-template">
+            <div class={{classe}}></div>
+        </script>
     </body>
 </html>
