@@ -9,18 +9,25 @@ $(document).ready(function(){
     creaGriglia(larghezzaGriglia, righeGriglia);
     // Evento click di un quadratino (per colorarlo verde o rosso)
     $(".quadratino").click(function() {
+        // Memorizzo in una variabile il click attuale
         var click_attuale = $(this);
+        // Iniziouna chiamata Ajax
         $.ajax({
             url: 'https://flynn.boolean.careers/exercises/api/random/int',
             method: 'GET',
             success: function(data) {
+                // Memorizzo il risultato restituito in una variabile
                 numero = data.response;
-                console.log('Il numero estratto è ' + numero);
+                // Controllo se il numero restituito dall' API è <= 5
                 if (numero <= 5) {
+                    // Coloro il quadratino giallo se  numero è <= 5
                     click_attuale.addClass("yellow");
+                    // Stampo al centro del quadratino il  numero restituito  dall ' API
                     click_attuale.html(numero);
                 } else {
+                    // Coloro il quadratino verde se  numero è > 5
                     click_attuale.addClass("green");
+                    // Stampo al centro del quadratino il  numero restituito  dall ' API
                     click_attuale.html(numero);
                 }
             },
