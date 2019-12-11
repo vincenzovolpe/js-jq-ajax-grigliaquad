@@ -8,11 +8,11 @@ var numero_estratto;
 $(document).ready(function(){
     // Chiamiamo la funzione per la creazione della Griglia
     creaGriglia(larghezzaGriglia, righeGriglia);
-    // Evento click di un quadratino (per colorarlo verde o rosso)
+    // Evento click su un quadratino (per colorarlo giallo o verde)
     $(".quadratino").click(function() {
         // Memorizzo in una variabile il click attuale
         var click_attuale = $(this);
-        // Iniziouna chiamata Ajax
+        // Inizio una chiamata Ajax all' API che mi ritorno un numero random tra 1 e 9
         $.ajax({
             url: 'https://flynn.boolean.careers/exercises/api/random/int',
             method: 'GET',
@@ -47,9 +47,9 @@ $(window).resize(function() {
 
 // Funzione per la generazione dei quadratini
 function creaGriglia(larghezzaGriglia, righeGriglia) {
-  // Recupero l'html del template del messaggio
+  // Recupero l'html del template quadratino
   var template_html = $('#template-quadratino').html();
-  // Compilo l'html  con la funzione di handlebars
+  // Compilo l'html con la funzione di handlebars
   var template_function = Handlebars.compile(template_html);
   // Calcolo il totale dei quadratini della griglia
   var totaleQuadratini = righeGriglia * righeGriglia;
