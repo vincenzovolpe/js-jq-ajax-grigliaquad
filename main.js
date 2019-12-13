@@ -13,20 +13,23 @@ $(document).ready(function(){
     $(".quadratino").click(function() {
         // Memorizzo in una variabile il click attuale
         var click_attuale = $(this);
-        // Inizio una chiamata Ajax all' API che mi ritorno un numero random tra 1 e 9
-        $.ajax({
-            url: 'https://flynn.boolean.careers/exercises/api/random/int',
-            method: 'GET',
-            success: function(data) {
-                // Memorizzo il risultato restituito in una variabile
-                numero = data.response;
-                // Chiamo la funzione che colora il quadratino e stampa il numero al centro
-                colora_e_stampa(click_attuale, numero);
-            },
-            error: function() {
-                alert('Error')
-            }
-        });
+        // Se non hanno le classi yellow o green non faccio nulla
+        if(!click_attuale.hasClass('yellow') && !click_attuale.hasClass('green')) {
+            // Inizio una chiamata Ajax all' API che mi ritorno un numero random tra 1 e 9
+            $.ajax({
+                url: 'https://flynn.boolean.careers/exercises/api/random/int',
+                method: 'GET',
+                success: function(data) {
+                    // Memorizzo il risultato restituito in una variabile
+                    numero = data.response;
+                    // Chiamo la funzione che colora il quadratino e stampa il numero al centro
+                    colora_e_stampa(click_attuale, numero);
+                },
+                error: function() {
+                    alert('Error')
+                }
+            });
+        }
     });
 });
 
